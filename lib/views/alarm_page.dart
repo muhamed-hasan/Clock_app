@@ -23,8 +23,11 @@ class _AlarmPageState extends State<AlarmPage> {
   AlarmHelper _alarmHelper = AlarmHelper();
   Future<List<AlarmInfo>>? _alarms;
   List<AlarmInfo>? _currentAlarms;
+
+
   @override
   void initState() {
+
     alarmTime = DateTime.now();
     _alarmHelper.initialzeDatabase().then((_) {
       print('database intialized');
@@ -248,7 +251,7 @@ class _AlarmPageState extends State<AlarmPage> {
         lastid!,
         'OFFICE',
         'good morning , time for office',
-        tz.TZDateTime.from(scheduleAlarmTime, tz.local),
+        tz.TZDateTime.from(scheduleAlarmTime, tz.UTC),
         //tz.TZDateTime.now(tz.local).add(Duration(seconds: 2)),
         platformChannelSpecifics,
         androidAllowWhileIdle: true,

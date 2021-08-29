@@ -164,11 +164,10 @@ class _TimerPageState extends State<TimerPage> with TickerProviderStateMixin {
 
   void onScheduleAlarm(Duration duration) async {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-      'alarm_notif',
-      'alarm_notif',
-      'Channel for Alarm notification',
+      'CHANNEL_ID 1', 'CHANNEL_NAME 1', 'CHANNEL_DESCRIPTION 1',
       icon: 'alarm_icon',
       sound: RawResourceAndroidNotificationSound('a_long_cold_sting'),
+      importance: Importance.max,
       playSound: true,
       largeIcon: DrawableResourceAndroidBitmap('alarm_icon'),
     );
@@ -186,7 +185,7 @@ class _TimerPageState extends State<TimerPage> with TickerProviderStateMixin {
         0,
         'Timer',
         'Timer Done , Timer Done',
-        tz.TZDateTime.now(tz.local).add(duration),
+        tz.TZDateTime.now(tz.UTC).add(duration),
         //   tz.TZDateTime.now(tz.local).add(Duration(seconds: 1)),
         //tz.TZDateTime.now(tz.local).add(Duration(seconds: 2)),
         platformChannelSpecifics,
